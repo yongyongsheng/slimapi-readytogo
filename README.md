@@ -1,33 +1,17 @@
-# Slim 3 Skeleton
+# Slim 3 REST Skeleton
 
-This is a simple skeleton project for Slim 3 that includes Twig, Flash messages and Monolog.
+This is a simple skeleton project for Slim 3 that implements a simple REST API.
+Based on [akrabat's slim3-skeleton](https://github.com/akrabat/slim3-skeleton).
 
-## Create your project:
+The master branch also uses [Eloquent](https://laravel.com/docs/5.2/eloquent) and [Phinx](https://phinx.org/).
+If you are looking for a minimal skeleton only using Slim 3, checkout the minimal branch.
 
-    $ composer create-project --no-interaction --stability=dev akrabat/slim3-skeleton my-app
+## Create Database
 
-### Run it:
+Add database settings to app/settings.php.
 
-1. `$ cd my-app`
-2. `$ php -S 0.0.0.0:8888 -t public public/index.php`
-3. Browse to http://localhost:8888
-
-## Key directories
-
-* `app`: Application code
-* `app/src`: All class files within the `App` namespace
-* `app/templates`: Twig template files
-* `cache/twig`: Twig's Autocreated cache files
-* `log`: Log files
-* `public`: Webserver root
-* `vendor`: Composer dependencies
-
-## Key files
-
-* `public/index.php`: Entry point to application
-* `app/settings.php`: Configuration
-* `app/dependencies.php`: Services for Pimple
-* `app/middleware.php`: Application middleware
-* `app/routes.php`: All application routes are here
-* `app/src/Action/HomeAction.php`: Action class for the home page
-* `app/templates/home.twig`: Twig template file for the home page
+run:
+```
+vendor/bin/phinx migrate
+vendor/bin/phinx seed:run
+```

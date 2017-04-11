@@ -1,27 +1,40 @@
 <?php
+
 namespace App\Action;
 
-use Slim\Views\Twig;
 use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+/**
+ * Class HomeAction.
+ */
 final class HomeAction
 {
-    private $view;
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
     private $logger;
 
-    public function __construct(Twig $view, LoggerInterface $logger)
+    /**
+     * @param \Psr\Log\LoggerInterface $logger
+     */
+    public function __construct(LoggerInterface $logger)
     {
-        $this->view = $view;
         $this->logger = $logger;
     }
 
+    /**
+     * @param \Slim\Http\Request  $request
+     * @param \Slim\Http\Response $response
+     * @param array               $args
+     *
+     * @return \Slim\Http\Response
+     */
     public function __invoke(Request $request, Response $response, $args)
     {
-        $this->logger->info("Home page action dispatched");
-        
-        $this->view->render($response, 'home.twig');
+        $this->logger->info('Home page action dispatched'); 
+        $response->write('SLIM3 Restful API'); 
         return $response;
     }
 }
